@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form validation</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f9f9f9;
+        }
+        .form-container{
+            width: 500px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px #eee;
+        }
+        .h2{
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        label{
+            display: block;
+            margin-bottom: 4.99px;
+        }
+        input{
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1 px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .error{
+            color: red;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+        button{
+            width: 100%;
+            padding: 10px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 17px;
+        }
+        button:hover{
+            background-color: #45a049;
+        }
+        span{
+            color: #257029;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Form Validation</h2>
+        <form id="myform">
+            <label for="name">Enter name:</label>
+            <input type="text" id="name" placeholder="Name">
+            <div id="error-message" class="error"></div>
+            <button type="submit">Submit</button>
+            <span id="result"></span>
+        </form>
+    </div>
+    <script>
+        const cam = document.getElementById('myform');
+        const namInput = document.getElementById('name');
+        const errorMessage = document.getElementById('error-message');
+        cam.addEventListener('submit',function(event){
+            event.preventDefault();
+            const nameValue = namInput.value.trim();
+            if(!nameValue){
+                errorMessage.textContent = 'Name cannot be empty!';
+            } else if(nameValue.length < 3){
+                errorMessage.textContent = 'Name must be at least 3 characters long!';
+            }  else{
+                errorMessage.textContent = '';
+                document.getElementById("result").innerText = "submitted successfully!";
+                form.reset();
+            }
+        });
+    </script>
+</body>
+</html>
